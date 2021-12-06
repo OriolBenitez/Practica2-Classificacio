@@ -1,0 +1,108 @@
+\documentclass[a4paper, 11pt]{article}
+
+\usepackage[justification=centering]{caption}
+\usepackage[catalan]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{mathtools}
+\usepackage{microtype}
+\usepackage{pythontex}
+\usepackage{amsfonts}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{verbatim}
+\usepackage{amsmath}
+\usepackage{float}
+\usepackage[table,xcdraw]{xcolor}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\DisableLigatures{encoding = *, family = *}
+
+\geometry{left=25mm, right=25mm, top=25mm, bottom=25mm}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Joel, Jordi, i Oriol}
+\rhead{Aprenentatge Computacional}
+\cfoot{\thepage}
+
+\renewcommand{\headrulewidth}{0.6pt}
+\renewcommand{\footrulewidth}{0.6pt}
+\renewcommand{\baselinestretch}{1.5}
+\setlength{\headheight}{13.6pt}
+
+\title{\Huge{\textbf{Pràctica 2: Classificació}}}
+\author{\Large{Joel Guevara Lopez, 1564581}
+        \\\Large{Jordi Morales Casas, 1564921}
+        \\\Large{Oriol Benítez Bravo, 1566931}}
+\date{Aprenentatge Computacional, III MatCAD\\ \vspace{6pt} Desembre 2021}
+
+
+\begin{document}
+
+    \maketitle
+    
+    \section{Models de classificació aplicats al \textit{dataset} IRIS}
+    
+    La nostra base de dades consisteix en un conjunt de atributs que ens donen 
+    les característiques de una flor i ens diu a que especie de flor pertany.
+    Les variables són \textit{Sepal Length}, \textit{Sepal Width},  \textit{Petal
+    Length} i \textit{Petal Width} i les especies a clasificar seràn \textit{Setosa}, 
+    \textit{Versicolour} i \textit{Virginica}.
+    
+    En aquesta practica el que farem serà utilitzar diferents tipus de models de 
+    classificació per poder trobar una predicció que ens decideixi la especie
+    de la flor a partir de les seves característiques.
+    \subsection{Models de classificació}
+        \begin{itemize}
+            \item \textbf{Regressió logística:}
+                Observem com la classe 0 (Setosa) es classifica perfectament, la qual cosa indica que les seves característiques la diferencien de la resta. No succeeix el mateix per la resta de classes. A la corba PR veiem com no és possible assolir un \textit{recall} alt sense perdre molta precisió. Tot i això, si ens fixem en l'àrea sota la corba ROC, podem concloure que és bastant probable que distingeixi positivament aquestes classes. 
+                
+                \begin{figure}[H]%
+                \centering
+                \subfloat{{\includegraphics[width=7.5cm]{problr pr.png}}}%
+                \qquad
+                \subfloat{{\includegraphics[width=7.5cm]{problr rog.png}}}%
+                \end{figure}
+                
+            \item \textbf{Regressió logística:}
+                Observem com la classe 0 (Setosa) es classifica perfectament, la qual cosa indica que les seves característiques la diferencien de la resta. No succeeix el mateix per la resta de classes. A la corba PR veiem com no és possible assolir un \textit{recall} alt sense perdre molta precisió. Tot i això, si ens fixem en l'àrea sota la corba ROC, podem concloure que és bastant probable que distingeixi positivament aquestes classes. 
+                
+                \begin{figure}[H]%
+                \centering
+                \subfloat{{\includegraphics[width=7.5cm]{problr pr.png}}}%
+                \qquad
+                \subfloat{{\includegraphics[width=7.5cm]{problr rog.png}}}%
+                \end{figure}
+
+            
+        \end{itemize}
+\end{document}
+
