@@ -68,41 +68,486 @@
 \begin{document}
 
     \maketitle
-    
+
     \section{Models de classificació aplicats al \textit{dataset} IRIS}
-    
-    La nostra base de dades consisteix en un conjunt de atributs que ens donen 
-    les característiques de una flor i ens diu a que especie de flor pertany.
-    Les variables són \textit{Sepal Length}, \textit{Sepal Width},  \textit{Petal
-    Length} i \textit{Petal Width} i les especies a clasificar seràn \textit{Setosa}, 
-    \textit{Versicolour} i \textit{Virginica}.
-    
-    En aquesta practica el que farem serà utilitzar diferents tipus de models de 
-    classificació per poder trobar una predicció que ens decideixi la especie
-    de la flor a partir de les seves característiques.
+
+    La nostra base de dades consisteix en un conjunt d'atributs que ens donen les característiques
+    d'una flor i ens diu a què espècie de flor pertany. Les variables són \textit{Sepal Length},
+    \textit{Sepal Width}, \textit{Petal Length} i \textit{Petal Width} i les especies a classificar
+    seran \textit{Setosa}, \textit{Versicolour} i \textit{Virginica}.
+
+    En aquesta pràctica el que farem serà utilitzar diferents tipus de models de classificació per
+    poder trobar una predicció que ens decideixi la espècie de la flor a partir de les seves
+    característiques.
     \subsection{Models de classificació}
+    Per cada model hem generat les corbes \textit{PR} i \textit{ROC} per poder avaluar la classificació de les
+    diferents classes. A continuació es pot observar els resultats:
+    \newpage
         \begin{itemize}
             \item \textbf{Regressió logística:}
-                Observem com la classe 0 (Setosa) es classifica perfectament, la qual cosa indica que les seves característiques la diferencien de la resta. No succeeix el mateix per la resta de classes. A la corba PR veiem com no és possible assolir un \textit{recall} alt sense perdre molta precisió. Tot i això, si ens fixem en l'àrea sota la corba ROC, podem concloure que és bastant probable que distingeixi positivament aquestes classes. 
-                
+
+
                 \begin{figure}[H]%
                 \centering
                 \subfloat{{\includegraphics[width=7.5cm]{problr pr.png}}}%
                 \qquad
                 \subfloat{{\includegraphics[width=7.5cm]{problr rog.png}}}%
-                \end{figure}
-                
-            \item \textbf{Regressió logística:}
-                Observem com la classe 0 (Setosa) es classifica perfectament, la qual cosa indica que les seves característiques la diferencien de la resta. No succeeix el mateix per la resta de classes. A la corba PR veiem com no és possible assolir un \textit{recall} alt sense perdre molta precisió. Tot i això, si ens fixem en l'àrea sota la corba ROC, podem concloure que és bastant probable que distingeixi positivament aquestes classes. 
-                
-                \begin{figure}[H]%
-                \centering
-                \subfloat{{\includegraphics[width=7.5cm]{problr pr.png}}}%
-                \qquad
-                \subfloat{{\includegraphics[width=7.5cm]{problr rog.png}}}%
+                \caption*{Regressió logística: Corba PR (dreta) i ROC (esquerra)}
                 \end{figure}
 
-            
+            \item \textbf{SVM amb kernel RBF:}
+
+
+                \begin{figure}[H]%
+                \centering
+                \subfloat{{\includegraphics[width=7.5cm]{probsvc pr.png}}}%
+                \qquad
+                \subfloat{{\includegraphics[width=7.5cm]{probsvc rog.png}}}%
+                \caption*{SVM amb kernel RBF: Corba PR (dreta) i ROC (esquerra)}
+                \end{figure}
+
+            \item \textbf{SVM amb kernel lineal:}
+
+
+                \begin{figure}[H]%
+                \centering
+                \subfloat{{\includegraphics[width=7.5cm]{probsvcl pr.png}}}%
+                \qquad
+                \subfloat{{\includegraphics[width=7.5cm]{probsvcl rog.png}}}%
+                \caption*{SVM amb kernel lineal: Corba PR (dreta) i ROC (esquerra)}
+                \end{figure}
+
+
+            \item \textbf{SVM amb kernel polinomial de grau 2:}
+
+
+                \begin{figure}[H]%
+                \centering
+                \subfloat{{\includegraphics[width=7.5cm]{probsvcp2 pr.png}}}%
+                \qquad
+                \subfloat{{\includegraphics[width=7.5cm]{probsvcp2 rog.png}}}%
+                \caption*{SVM amb kernel polinomial de grau 2: Corba PR (dreta) i ROC (esquerra)}
+                \end{figure}
+
+
+            \item \textbf{SVM amb kernel polinomial de grau 3:}
+
+
+                \begin{figure}[H]%
+                \centering
+                \subfloat{{\includegraphics[width=7.5cm]{probsvcp pr.png}}}%
+                \qquad
+                \subfloat{{\includegraphics[width=7.5cm]{probsvcp rog.png}}}%
+                \caption*{SVM amb kernel polinomial de grau 3: Corba PR (dreta) i ROC (esquerra)}
+                \end{figure}
+
+
+            \item \textbf{SVM amb kernel Sigmoidal:}
+
+
+                \begin{figure}[H]%
+                \centering
+                \subfloat{{\includegraphics[width=7.5cm]{probsvcs pr.png}}}%
+                \qquad
+                \subfloat{{\includegraphics[width=7.5cm]{probsvcs rog.png}}}%
+                \caption*{SVM amb kernel Sigmoidal: Corba PR (dreta) i ROC (esquerra)}
+                \end{figure}
+
+            \item \textbf{Random Forest amb criteri \textit{GINI}:}
+
+
+                \begin{figure}[H]%
+                \centering
+                \subfloat{{\includegraphics[width=7.5cm]{probclf pr.png}}}%
+                \qquad
+                \subfloat{{\includegraphics[width=7.5cm]{probclf rog.png}}}%
+                \caption*{Random Forest amb criteri \textit{GINI}: Corba PR (dreta) i ROC (esquerra)}
+                \end{figure}
+
+            \item \textbf{Random Forest amb criteri \textit{entropy}:}
+
+
+                \begin{figure}[H]%
+                \centering
+                \subfloat{{\includegraphics[width=7.5cm]{probclfe pr.png}}}%
+                \qquad
+                \subfloat{{\includegraphics[width=7.5cm]{probclfe rog.png}}}%
+                \caption*{Random Forest amb criteri \textit{entropy}: Corba PR (dreta) i ROC (esquerra)}
+                \end{figure}
+
+            \item \textbf{KNN amb l'algoritme de \textit{ball tree}:}
+
+
+                \begin{figure}[H]%
+                \centering
+                \subfloat{{\includegraphics[width=7.5cm]{probKNNbt pr.png}}}%
+                \qquad
+                \subfloat{{\includegraphics[width=7.5cm]{probKNNbt rog.png}}}%
+                \caption*{KNN amb l'algoritme de \textit{ball tree}: Corba PR (dreta) i ROC (esquerra)}
+                \end{figure}
+
+
+            \item \textbf{KNN amb l'algoritme de \textit{ball tree} amb els pesos ajustats segons la distància:}
+
+
+                \begin{figure}[H]%
+                \centering
+                \subfloat{{\includegraphics[width=7.5cm]{probKNNbtwd pr.png}}}%
+                \qquad
+                \subfloat{{\includegraphics[width=7.5cm]{probKNNbtwd rog.png}}}%
+                \caption*{KNN amb l'algoritme de \textit{ball tree} amb els pesos ajustats segons la distància: Corba PR (dreta) i ROC (esquerra)}
+                \end{figure}
+
+
+            \item \textbf{KNN amb l'algoritme de \textit{kd tree}:}
+
+
+                \begin{figure}[H]%
+                \centering
+                \subfloat{{\includegraphics[width=7.5cm]{probKNNkd pr.png}}}%
+                \qquad
+                \subfloat{{\includegraphics[width=7.5cm]{probKNNkd rog.png}}}%
+                \caption*{KNN amb l'algoritme de \textit{kd tree}: Corba PR (dreta) i ROC (esquerra)}
+                \end{figure}
+
+            \newpage
+            \item \textbf{KNN amb l'algoritme de \textit{kd tree} amb els pesos ajustats segons la distància:}
+
+
+                \begin{figure}[H]%
+                \centering
+                \subfloat{{\includegraphics[width=7.5cm]{probKNNkdwd pr.png}}}%
+                \qquad
+                \subfloat{{\includegraphics[width=7.5cm]{probKNNkdwd rog.png}}}%
+                \caption*{KNN amb l'algoritme de \textit{kd tree} amb els pesos ajustats segons la distància: Corba PR (dreta) i ROC (esquerra)}
+                \end{figure}
+
+
+            \item \textbf{KNN complet (força bruta):}
+
+
+                \begin{figure}[H]%
+                \centering
+                \subfloat{{\includegraphics[width=7.5cm]{probKNNbrt pr.png}}}%
+                \qquad
+                \subfloat{{\includegraphics[width=7.5cm]{probKNNbrt rog.png}}}%
+                \caption*{KNN complet: Corba PR (dreta) i ROC (esquerra)}
+                \end{figure}
+
+            \newpage
+            \item \textbf{KNN complet amb els pesos ajustats segons la distància:}
+
+
+                \begin{figure}[H]%
+                \centering
+                \subfloat{{\includegraphics[width=7.5cm]{probKNNbrtwd pr.png}}}%
+                \qquad
+                \subfloat{{\includegraphics[width=7.5cm]{probKNNbrtwd rog.png}}}%
+                \caption*{KNN complet amb els pesos ajustats segons la distància: Corba PR (dreta) i ROC (esquerra)}
+                \end{figure}
         \end{itemize}
-\end{document}
 
+        Si estudiem classe per classe, veiem com la classe 0 (Setosa) es classifica perfectament
+        (Arriba a (1,1) seguint una línia horitzontal a la gràfica \textit{PR} i a l'àrea màxima a la corba
+        ROC), la qual cosa indica que les seves característiques la diferencien de la resta.
+
+        No succeeix el mateix amb la resta de classes: Tant la classe 1 (Versicolor) com la 2
+        (Virginica) tenen un comportament força similar amb tots els models. Si ens fixem en la
+        corba \textit{PR} observem com no és possible assolir un \textit{recall} alt sense perdre molta
+        precisió. Tot i això, si mirem l'àrea sota la corba ROC, podem concloure que és bastant
+        probable que distingeixi positivament aquestes classes (Les corbes es troben per sobre de
+        la diagonal).
+        D'entre tots podem destacar el model logístic, l'\textit{SVM} amb \textit{kernel RBF} i el \textit{Random
+        Forest} amb criteri \textit{GINI}. Aquests semblen obtenir el millor balanç entre precisió i
+        \textit{recall} i classifiquen correctament les classes de manera consistent.
+
+        L'únic cas on no succeeix el descrit anteriorment és quan es fa servir un \textit{SVM} amb \textit{kernel}
+        Sigmoidal. En un cas ideal les corbes \textit{PR} haurien de tendir a un \textit{recall} d'1 amb el
+        màxim de precisió possible, però el que veiem és el contrari, la qual cosa ens indica
+        clarament que aquestes dades no són res apropiades pel model. També s'ha perdut la propietat
+         que classificava perfectament la classe 0.
+
+        Per comprovar aquestes reflexions, es pot observar la precisió d'aquests models en el
+        classificador de les classes.
+        \begin{table}[H]
+        \resizebox{15cm}{!} {
+            \begin{tabular}{|l|l|l|}
+            \hline
+            \textbf{Métode de selecció} & \textbf{Precisió}  & \textbf{Especificacions}                             \\ \hline
+            Logistic                    & 0.8                &                                                      \\ \hline
+            SVM                         & 0.7666666666666667 & kernel='rbf'                                         \\ \hline
+            SVM                         & 0.7333333333333333 & kernel='lineal'                                      \\ \hline
+            SVM                         & 0.7333333333333333 & kernel='poly',degree=2                               \\ \hline
+            SVM                         & 0.7333333333333333 & kernel='poly',degree=3                               \\ \hline
+            SVM                         & 0.2333333333333334 & kernel='sigmoid'                                     \\ \hline
+            Random Forest               & 0.8                & max\_depth=2                                         \\ \hline
+            Random Forest               & 0.7666666666666667 & n\_estimators=1000, max\_depth=5,criterion="entropy" \\ \hline
+            KNN                         & 0.6666666666666666 & algorithm="ball\_tree"                               \\ \hline
+            KNN                         & 0.6666666666666666 & algorithm="kd\_tree"                                 \\ \hline
+            KNN                         & 0.7333333333333333 & algorithm="brute"                                    \\ \hline
+            KNN                         & 0.6666666666666666 & algorithm="ball\_tree",weights="distance"            \\ \hline
+            KNN                         & 0.6666666666666666 & algorithm="kd\_tree",weights="distance"              \\ \hline
+            KNN                         & 0.7                & algorithm="brute",weights="distance"                 \\ \hline
+            \end{tabular}
+        }
+        \end{table}
+
+        Podem observar que les millors classificacions les fan el model logístic i el \textit{Random Forest}
+        amb \textit{max\_depth=2}, tot i això, en alguns casos les diferències són molt petites i
+        depenen de com es distribueixen les dades.
+
+        Les que fan una pitjor classificació són el \textit{SVM} amb el \textit{kernel} de la funció sigmoide
+        i el \textit{KNN} amb els algoritmes \textit{ball tree} i \textit{kd tree} tant amb pesos com sense.
+
+    \newpage
+    \section{Classificació numèrica aplicada al \textit{dataset} POKEMON}
+    La nostra base de dades consisteix en un conjunt de dades sobre els 802 Pokemon de les set
+    generacions.
+
+    De cada Pokemon tenim el nom, el nom en japonès, el numero en la Pokedex, el percentatge dels
+    Pokemon de l'espècie que són mascles, els dos tipus del Pokemon, la descripció del Pokemon,
+    altura i pes del Pokemon, la ràtio de captura, els passos per obrir l'ou de l'espècie, les
+    habilitats del Pokemon, la quantitat d'experiència que pot arribar a obtenir, la felicitat base
+    del Pokemon, la vida base, l'atac base, la defensa base, l'atac especial base, la defensa
+    especial base, la velocitat base, la generació a la qual pertany i si és llegendari o no.
+
+    \subsection{Anàlisis inicial de les dades}
+    Primerament, s'ha observat quines variables tenien components buides.
+
+    La variable \textit{Type 2} que correspon al segon tipus del Pokemon en alguns casos es
+    buida pel fet que no tots els Pokemon tenen dos tipus. Per corregir-ho, s'ha emplenat en les
+    buides amb el tipus principal del Pokemon.
+
+    S'ha decidit que el que s'intentarà classificar és si un Pokemon és llegendari o no depenguin dels seus atributs.
+
+    Les variables \textit{name}, \textit{japanese\_name}, \textit{pokedex\_number},
+    \textit{percentage\_male}, \textit{abilities}, \textit{classfication}
+    han sigut eliminades perquè la informació que aporten no és útil per la classificació.
+
+    Les variables del tipus del Pokemon contenen paraules per especificar el tipus al qual pertanyen.
+    S'ha aplicat un \textit{Label Encoder} per traduir aquestes paraules a valors numèrics
+    diferenciables.
+
+    \newpage
+    \subsection{Estudi de les correlacions}
+
+    A continuació es presenten les correlacions entre les variables dependents i si un Pokemon és
+    llegendari o no:
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale=0.3]{correlacionesIsLegenday.png}
+        \caption{Correlacions dels atributs amb la variable a classificar.}
+    \end{figure}
+
+    La conclusió més directa que podem treure és que la variable \textit{base\_egg\_steps}
+    sembla que pot descriure molt bé el comportament de la variable objectiu, ja que té una
+    correlació positiva del $0.87$. Altres variables que també tindran un pes important en
+    els models són \textit{attack}, \textit{base\_happiness}, \textit{base\_total}, \textit{experience\_growth},
+    \textit{height}, \textit{hp}, \textit{sp\_attack}, \textit{sp\_defense}, \textit{speed}
+    i \textit{weight\_kg}.
+
+    De les anteriors totes tenen una correlació positiva (favoreixen que el Pokemon sigui llegendari), excepte \textit{base\_happiness}.
+
+    \newpage
+    \subsection{Depuració de les dades}
+    Un problema que hem hagut de resoldre al principi ha sigut que dues de les columnes del \textit{dataset} presentaven valor \textit{NaN}. Per sort una d'aquestes dues (\textit{percentage\_male}) hem considerat que no era útil per l'estudi i l'hem tret sencera. L'altra columna, \textit{type2}, sí que era més interessant mantenir-la perquè indica el segon tipus del Pokemon. La raó per la qual molts valors d'aquest atribut estaven buits era degut al fet que alguns Pokemon només tenen un tipus (\textit{type1}, totes les mostres tenen aquest atribut). La solució ha sigut omplir els \textit{type2} buits amb el mateix valor que hi ha a \textit{type1}.
+
+    Si ens fixem en les dades categòriques veiem com alguns atributs que fan referència a noms (\textit{name}, \textit{japanese\_name} o \textit{abilities}) i que podrien considerar-se que són categories són prescindibles a l'hora de classificar. Altres columnes amb dades categòriques que sí que volem són les de \textit{type1} i \textit{type2}. Per codificar-les fem servir la rutina \textit{LabelEncoder} perquè les etiquetes prenguin valors enters entre 0 i el nombre de categories menys 1.
+
+    Una altra consideració ha sigut com normalitzar les dades, ja que fer això podria facilitar el procés de classificació. En el nostre cas farem una normalització estàndard sobre tota la base de dades restant la mitjana i dividint entre la desviació estàndard.
+
+    \newpage
+    \subsection{Aplicació de models}
+    Per decidir quin model és el millor per classificar els atributs hem aplicat uns models i hem observat quins tenien un millors \textit{accuracy}.
+
+    En la següent taula es poden observar els resultats.
+    \begin{table}[H]
+        \resizebox{15cm}{!} {
+            \begin{tabular}{|l|l|l|}
+            \hline
+            \textbf{Mètode de selecció} & \textbf{Precisió}  & \textbf{Especificacions}                             \\ \hline
+            Logistic                    & 0.9813664596273292 &                                                      \\ \hline
+            SVM                         & 0.968944099378882  & kernel='rbf'                                         \\ \hline
+            SVM                         & 0.9813664596273292 & kernel='lineal'                                      \\ \hline
+            SVM                         & 0.9937888198757764 & kernel='poly',degree=2                               \\ \hline
+            SVM                         & 0.9937888198757764 & kernel='poly',degree=3                               \\ \hline
+            SVM                         & 0.8571428571428571 & kernel='sigmoid'                                     \\ \hline
+            Random Forest               & 0.9813664596273292 & max\_depth=2                                         \\ \hline
+            Random Forest               & 1.0                & n\_estimators=1000, max\_depth=5,criterion="entropy" \\ \hline
+            KNN                         & 0.9751552795031055 & algorithm="ball\_tree"                               \\ \hline
+            KNN                         & 0.9751552795031055 & algorithm="kd\_tree"                                 \\ \hline
+            KNN                         & 0.9751552795031055 & algorithm="brute"                                    \\ \hline
+            KNN                         & 0.9813664596273292 & algorithm="ball\_tree",weights="distance"            \\ \hline
+            KNN                         & 0.9813664596273292 & algorithm="kd\_tree",weights="distance"              \\ \hline
+            KNN                         & 0.9813664596273292 & algorithm="brute",weights="distance"                 \\ \hline
+            \end{tabular}
+        }
+        \end{table}
+        Observem que el \textit{Random forest} amb el nombre d'estimadors amb 1000, el màxim de profunditat amb 5 i que el criteri de classificació sigui l'entropia ens classifica de forma perfecta el model, tot i que
+        ens trobem moltes opcions amb un 0.99 de \textit{accuracy}, les quals podrien també ser una bona opció per fer la classificació.
+
+        En aquest cas hem aplicat \textit{ensamble} en els \textit{random\_forest}, ja que ens millorava el classificador, però augmenta el cost de recursos per fer la classificació,
+        podent provocar problemes a l'aplicar-ho a bases de dades molt grans.
+
+        Per provar si el \textit{PCA} millorava la classificació hem aplicat els mateixos models sobre les dades modificades i els resultats es poden observar en la següent taula.
+        \begin{table}[H]
+        \resizebox{15cm}{!} {
+            \begin{tabular}{|l|l|l|}
+            \hline
+            \textbf{Mètode de selecció} & \textbf{Precisió}  & \textbf{Especificacions}                             \\ \hline
+            Logistic                    & 0.9627329192546584 &                                                      \\ \hline
+            SVM                         & 0.968944099378882  & kernel='rbf'                                         \\ \hline
+            SVM                         & 0.9751552795031055 & kernel='lineal'                                      \\ \hline
+            SVM                         & 0.937888198757764  & kernel='poly',degree=2                               \\ \hline
+            SVM                         & 0.968944099378882  & kernel='poly',degree=3                               \\ \hline
+            SVM                         & 0.9503105590062112 & kernel='sigmoid'                                     \\ \hline
+            Random Forest               & 0.937888198757764  & max\_depth=2                                         \\ \hline
+            Random Forest               & 0.968944099378882  & n\_estimators=1000, max\_depth=5,criterion="entropy" \\ \hline
+            KNN                         & 0.9751552795031055 & algorithm="ball\_tree"                               \\ \hline
+            KNN                         & 0.9751552795031055 & algorithm="kd\_tree"                                 \\ \hline
+            KNN                         & 0.9751552795031055 & algorithm="brute"                                    \\ \hline
+            KNN                         & 0.968944099378882  & algorithm="ball\_tree",weights="distance"            \\ \hline
+            KNN                         & 0.968944099378882  & algorithm="kd\_tree",weights="distance"              \\ \hline
+            KNN                         & 0.968944099378882  & algorithm="brute",weights="distance"                 \\ \hline
+            \end{tabular}
+        }
+        \end{table}
+
+        També hem aplicat a els \textit{polinomial features} els diferents models per veure si causen alguna millora.
+
+        Taula de dades elevades al quadrat:
+        \begin{table}[H]
+            \resizebox{15cm}{!} {
+                \begin{tabular}{|l|l|l|}
+                \hline
+                \textbf{Mètode de selecció} & \textbf{Precisió}  & \textbf{Especificacions}                             \\ \hline
+                Logistic                    & 0.9627329192546584 &                                                      \\ \hline
+                SVM                         & 0.9565217391304348 & kernel='rbf'                                         \\ \hline
+                SVM                         & 0.9565217391304348 & kernel='lineal'                                      \\ \hline
+                SVM                         & 0.9503105590062112 & kernel='poly',degree=2                               \\ \hline
+                SVM                         & 0.9627329192546584 & kernel='poly',degree=3                               \\ \hline
+                SVM                         & 0.9192546583850931 & kernel='sigmoid'                                     \\ \hline
+                Random Forest               & 0.9440993788819876 & max\_depth=2                                         \\ \hline
+                Random Forest               & 0.9503105590062112 & n\_estimators=1000, max\_depth=5,criterion="entropy" \\ \hline
+                KNN                         & 0.9627329192546584 & algorithm="ball\_tree"                               \\ \hline
+                KNN                         & 0.9627329192546584 & algorithm="kd\_tree"                                 \\ \hline
+                KNN                         & 0.9627329192546584 & algorithm="brute"                                    \\ \hline
+                KNN                         & 0.9565217391304348 & algorithm="ball\_tree",weights="distance"            \\ \hline
+                KNN                         & 0.9565217391304348 & algorithm="kd\_tree",weights="distance"              \\ \hline
+                KNN                         & 0.9565217391304348 & algorithm="brute",weights="distance"                 \\ \hline
+                \end{tabular}
+            }
+        \end{table}
+        \newpage
+        Taula de dades amb la combinació lineal de les dades:
+        \begin{table}[H]
+            \resizebox{15cm}{!} {
+                \begin{tabular}{|l|l|l|}
+                \hline
+                \textbf{Mètode de selecció} & \textbf{Precisió}  & \textbf{Especificacions}                             \\ \hline
+                Logistic                    & 0.9627329192546584 &                                                      \\ \hline
+                SVM                         & 0.9627329192546584 & kernel='rbf'                                         \\ \hline
+                SVM                         & 0.9627329192546584 & kernel='lineal'                                      \\ \hline
+                SVM                         & 0.9627329192546584 & kernel='poly',degree=2                               \\ \hline
+                SVM                         & 0.9627329192546584 & kernel='poly',degree=3                               \\ \hline
+                SVM                         & 0.937888198757764 & kernel='sigmoid'                                     \\ \hline
+                Random Forest               & 0.9503105590062112 & max\_depth=2                                         \\ \hline
+                Random Forest               & 0.968944099378882 & n\_estimators=1000, max\_depth=5,criterion="entropy" \\ \hline
+                KNN                         & 0.9565217391304348 & algorithm="ball\_tree"                               \\ \hline
+                KNN                         & 0.9565217391304348 & algorithm="kd\_tree"                                 \\ \hline
+                KNN                         & 0.9565217391304348 & algorithm="brute"                                    \\ \hline
+                KNN                         & 0.9565217391304348 & algorithm="ball\_tree",weights="distance"            \\ \hline
+                KNN                         & 0.9565217391304348 & algorithm="kd\_tree",weights="distance"              \\ \hline
+                KNN                         & 0.9565217391304348 & algorithm="brute",weights="distance"                 \\ \hline
+                \end{tabular}
+            }
+        \end{table}
+
+        Observem que la millor forma de fer la classificació és sense aplicar cap d'aquestes opcions i treballar amb les dades en brut del \textit{dataset}, ja que són les millors \textit{accuracy} que hem obtingut.
+
+        \subsection{\textit{Cross-validation}}
+        Per assegurar que un model serà efectiu quan es faci servir en una situació "real" es fan servir tècniques de validació creuada. D'aquesta manera, en teoria, s'aconsegueix que els resultats del model siguin independents de les dades utilitzades en el seu entrenament.
+
+        L'estratègia més simple és la de dividir el \textit{dataset} en dos conjunts: Un d'entrenament per generar el model i l'altre de prova, per testejar la seva precisió. En moltes situacions aquesta tècnica és suficient, especialment si disposem de moltes dades.
+
+        Si no tenim un gran volum de mostres, l'estratègia \textit{LeaveOneOut} pot ser més adequada. Es fan tants entrenaments com mostres hi ha al \textit{dataset}. Cadascun d'aquests models agafa una única mostra per fer validació i la resta s'utilitzen per entrenar.
+
+        \textit{K-fold} és una altra tècnica de \textit{cross-validation} on es fan $k$ particions de les dades, una d'aquestes es farà servir per validar el model i la resta per entrenar. Al final s'obtenen $k$ models, i el resultat serà la mitjana dels resultats de tots els models. De fet, \textit{LeaveOneOut} és un tipus de \textit{K-fold} on $k$ és igual al nombre de mostres.
+
+        Escollim el \textit{K-fold} de \textit{sklearn} amb $k=50$ perquè dona força bon resultats sobre la nostra base de dades. Si el combinem amb un model Random Forest, obtenim una precisió mitjana entre els 50 models de $0.995$.
+
+        Aplicar \textit{LeaveOneOut} amb una regressió logística dona $0.98377$ de precisió. Les dimensions del dataset no són tan grans com perquè suposi un problema de temps executar aquest algorisme, però ja hem vist com altres configuracions de models i \textit{cross-validations} donen millors resultats.
+
+        \subsection{Anàlisis de mètriques}
+        Per avaluar el rendiment de la classificació aplicada, és molt útil generar les corbes de \textit{ROC} i \textit{PR},
+        on la \textit{PR} ens determina la precisió com a la fracció d'instàncies recuperades que són rellevants i el \textit{recall} que és la fracció d'instàncies rellevants que han sigut recuperades, i la ROC és una representació gràfica de la sensibilitat en enfront de l'especificitat d'un sistema de classificació binari.
+        En el nostre cas, observarem les mètriques de les dades en brut amb els models de \textit{KNN} amb \textit{weights $=$ distance} i el \textit{random forest} amb \textit{criterion $=$ entropy} i 100 estimadors amb 5 de màxima profunditat que són dues mostres d'un model de classificació perfecte i altre de molt bona.
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[scale=0.3]{rfPR.png}
+            \caption{Corbes de PR per el \textit{Random Forest}}
+        \end{figure}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[scale=0.3]{rfROC.png}
+            \caption{Corbes de ROC per el \textit{Random Forest}}
+            \end{figure}
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[scale=0.3]{knnPR.png}
+            \caption{Corbes de PR per el \textit{KNN}}
+            \end{figure}
+        \begin{figure}[H]
+            \centering
+            \includegraphics[scale=0.3]{knnROC.png}
+            \caption{Corbes de ROC per el \textit{KNN}}
+            \end{figure}
+        Observem que en el cas del \textit{Random Forest} la precisió és 1, i, per tant, l'àrea sota la corba és màxima en tots dos casos.
+        En canvi, pel \textit{KNN}, per trobar una de les classes la recerca és quasi perfecte segons la \textit{ROC}, però, en la \textit{PR} observem pateix algunes variacions i dificultats en classificar.
+
+        Per assegurar la classificació observem el \textit{classification\_report} (que retorna la precisió, el \textit{recall} i el \textit{F1 score} per cada classe) dels dos models estudiats.
+
+        S'observa que les dues taules coincideixen i són la següent:
+        \begin{table}[H]
+            \centering
+            \begin{tabular}{|l|l|l|l|l|}
+            \hline
+            \textbf{Distancia}     & \textbf{Precision} & \textbf{Recall} & \textbf{f1-score} & \textbf{support} \\ \hline
+            \textbf{No llegendari} & 1.00               & 1.00            & 1.00              & 731              \\ \hline
+            \textbf{Llegendari}    & 0.97               & 1.00            & 0.99              & 70               \\ \hline
+            \textbf{accuracy}      &                    &                 & 1.00              & 801              \\ \hline
+            \textbf{macro avg}     & 0.99               & 1.00            & 0.99              & 801              \\ \hline
+            \textbf{weighted avg}  & 1.00               & 1.00            & 1.00              & 801              \\ \hline
+            \end{tabular}
+        \end{table}
+
+        Per poder avaluar correctament amb un cas desfavorable en la predicció utilitzarem el model de la sigmoide per comparar.
+
+        \begin{table}[H]
+            \centering
+            \begin{tabular}{|l|l|l|l|l|}
+            \hline
+            \textbf{Distancia}     & \textbf{Precision} & \textbf{Recall} & \textbf{f1-score} & \textbf{support} \\ \hline
+            \textbf{No llegendari} & 0.91               & 0.90            & 0.91              & 731              \\ \hline
+            \textbf{Llegendari}    & 0.08               & 0.09            & 0.08              & 70               \\ \hline
+            \textbf{accuracy}      &                    &                 & 0.83              & 801              \\ \hline
+            \textbf{macro avg}     & 0.49               & 0.49            & 0.49              & 801              \\ \hline
+            \textbf{weighted avg}  & 0.84               & 0.83            & 0.84              & 801              \\ \hline
+            \end{tabular}
+        \end{table}
+
+        De les dues taules podem concloure que, tot i que tant el \textit{Random Forest} com el \textit{SVM} amb \textit{kernel sigmoide} tenen una precisió força alta, el que fa que el primer sigui superior és que classifica amb la mateixa efectivitat les dues classes mentre que el \textit{SVM} classifica molt bé els Pokemon no llegendaris, però pràcticament no encerta els llegendaris.
+
+        \subsection{Cerca d'hiperparàmetres}
+
+        Els hiperparàmetres són uns valors que els models fan servir internament i que defineixen com serà el procés d'entrenament. Normalment, aquests paràmetres són independents de les dades. Per maximitzar el rendiment d'un model cal trobar la millor combinació d'hiperparàmentres. Destaquem dos mètodes:
+        \begin{itemize}
+            \item \textit{Grid Search}: Consisteix en provar exhaustivament totes les combinacions possibles entre un conjunt de paràmetres donats per l'usuari (Els punts que defineixen cada combinació generen una malla). És un bon mètode per fer servir si el model que volem optimitzar no és gaire complex o si tenim una idea aproximada de quins valors haurien de prendre els hiperparàmetres.
+
+            \item \textit{Random search}: De manera similar al \textit{Grid Search}, l'usuari genera una malla amb els hiperparàmetres que es volen provar, però ara les combinacions es trien aleatòriament. D'aquesta manera es pot explicitar quantes combinacions volem mirar. Això ve molt bé quan es treballa amb un model molt complex o es vol explorar una malla molt gran, on fer una cerca exhaustiva és inviable en termes de temps d'execució.
+        \end{itemize}
+
+\end{document}
