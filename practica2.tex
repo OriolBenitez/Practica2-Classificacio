@@ -68,6 +68,8 @@
 \begin{document}
 
     \maketitle
+    \tableofcontents
+    \newpage
 
     \section{Models de classificació aplicats al \textit{dataset} IRIS}
 
@@ -356,7 +358,10 @@
 
     \newpage
     \subsection{Aplicació de models}
-    Per decidir quin model és el millor per classificar els atributs hem aplicat uns models i hem observat quins tenien un millors \textit{accuracy}.
+
+    Per decidir quin model és el millor per classificar els atributs hem aplicat uns models i hem observat les seves \textit{accuracy}.
+
+    Per fer-los hem utilitzat els atributs reduïts que ens ha donat la \textit{Features selection}, que dona com a resultat que s'utilitzan 6 dels atributs de la base de dades inicials. Les features seleccionades seràn \textit{agains\_dark, agains\_ghost,  base\_egg\_steps, base\_total, capture\_rate i experience\_growth}.
 
     En la següent taula es poden observar els resultats.
     \begin{table}[H]
@@ -552,28 +557,32 @@
 
         \begin{table}[H]
             \centering
-            \begin{tabular}{|l|l|l|l|l|}
+            \begin{tabular}{|l|l|l|l|l|l|}
             \hline
-            \textbf{}              & \textbf{n\_estimators} & \textbf{max\_depth} & \textbf{Bootstrap}   & \textbf{$R^2$ obtingut} \\ \hline
-            \textbf{Grid Search}   & 100       & 5               & True & 0.987577639             \\ \hline
-            \textbf{Random Search} & 100       & 5             & True & 1.0          \\ \hline
+            \textbf{}              & \textbf{n\_estimators} & \textbf{max\_depth} & \textbf{Bootstrap}   & \textbf{$R^2$ obtingut} & \textbf{temps (s) } \\ \hline
+            \textbf{Grid Search}   & 100       & 5               & True       & 0.987577639  & 414.07   \\ \hline
+            \textbf{Random Search} & 100       & 5               & True       & 1.0          & 395.863           \\ \hline
             \end{tabular}
         \end{table}
 
         Amb el model KNN, la \textit{Grid Search} ha aconseguit trobar una combinació que dona un $R^2$ perfecte en les primeres iteracions mentre que l'opció aleatòria, com no fa una cerca exhaustiva de totes les combinacions, ha trobat una combinació pitjor, no només per tenir un $R^2$ més baix, sinó també per generar un model més complex.
         \begin{table}[H]
             \centering
-            \begin{tabular}{|l|l|l|l|l|}
+            \begin{tabular}{|l|l|l|l|l|l|}
             \hline
-            \textbf{}              & \textbf{Leaf Size} & \textbf{$p$} & \textbf{n\_neighbors} & \textbf{$R^2$ obtingut} \\ \hline
-            \textbf{Grid Search}   & 1                  & 1            & 1                     & 1.0                       \\ \hline
-            \textbf{Random Search} & 44                 & 1            & 5                     & 0.99378882              \\ \hline
+            \textbf{}              & \textbf{Leaf Size} & \textbf{$p$} & \textbf{n\_neighbors} & \textbf{$R^2$ obtingut} & \textbf{temps (s) } \\ \hline
+            \textbf{Grid Search}   & 1                  & 1            & 1                     & 1.0              & 82.6404        \\ \hline
+            \textbf{Random Search} & 44                 & 1            & 5                     & 0.99378882       & 16.075          \\ \hline
             \end{tabular}
         \end{table}
 
+        Es pot observar el increment en el cost de recursos per trobar els valors de la primera taula en comparació a la segona.
+
         \subsection{Conclusions}
 
+        S'ha pogut comprovar que el millor model de classificació per saber si un Pokemon és llegendari o no és el \textit{Random Forest}
+        que classifica de forma perfecta aquesta variable. Per fer el \textit{Random Forest} de la millor forma s'utilitzarà \textbf{n\_estimators$=$100}, \textbf{max\_depth$=$5} i \textbf{bootstrap $=$ TRUE}.
 
-
+        La resta de models que hem provat, amb diferents combinacions d'hiperparàmetres, produeixen resultats positius amb una precisió propera al $100\%$, el que ens indica que algunes de les variables determinen amb molta força si un Pokemon és o no llegendari.
 
 \end{document}
