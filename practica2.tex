@@ -550,4 +550,32 @@
             \item \textit{Random search}: De manera similar al \textit{Grid Search}, l'usuari genera una malla amb els hiperparàmetres que es volen provar, però ara les combinacions es trien aleatòriament. D'aquesta manera es pot explicitar quantes combinacions volem mirar. Això ve molt bé quan es treballa amb un model molt complex o es vol explorar una malla molt gran, on fer una cerca exhaustiva és inviable en termes de temps d'execució.
         \end{itemize}
 
+        
+        Si provem els dos algoritmes amb un model \textit{Random Forest}, veiem com en aquest cas els dos troben la mateixa combinació de variables.
+
+        \begin{table}[H]
+            \centering
+            \begin{tabular}{|l|l|l|l|l|}
+            \hline
+            \textbf{}              & \textbf{n\_estimators} & \textbf{max\_depth} & \textbf{Bootstrap}   & \textbf{$R^2$ obtingut} \\ \hline
+            \textbf{Grid Search}   & 100       & 5               & True & 0.987577639             \\ \hline
+            \textbf{Random Search} & 100       & 5             & True & 1.0          \\ \hline
+            \end{tabular}
+        \end{table}
+
+        Amb el model KNN, la \textit{Grid Search} ha aconseguit trobar una combinació que dona un $R^2$ perfecte en les primeres iteracions mentre que l'opció aleatòria, com no fa una cerca exhaustiva de totes les combinacions, ha trobat una combinació pitjor, no només per tenir un $R^2$ més baix, sinó també per generar un model més complex.
+        \begin{table}[H]
+            \centering
+            \begin{tabular}{|l|l|l|l|l|}
+            \hline
+            \textbf{}              & \textbf{Leaf Size} & \textbf{$p$} & \textbf{n\_neighbors} & \textbf{$R^2$ obtingut} \\ \hline
+            \textbf{Grid Search}   & 1                  & 1            & 1                     & 1.0                       \\ \hline
+            \textbf{Random Search} & 44                 & 1            & 5                     & 0.99378882              \\ \hline
+            \end{tabular}
+        \end{table}
+
+
+
+
+
 \end{document}
