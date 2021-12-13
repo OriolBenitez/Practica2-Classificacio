@@ -77,12 +77,28 @@
     seran \textit{Setosa}, \textit{Versicolour} i \textit{Virginica}.
 
     En aquesta pràctica el que farem serà utilitzar diferents tipus de models de classificació per
-    poder trobar una predicció que ens decideixi la espècie de la flor a partir de les seves
+    poder trobar una predicció que ens decideixi l'espècie de la flor a partir de les seves
     característiques.
-    \subsection{Models de classificació}
-    Per cada model hem generat les corbes \textit{PR} i \textit{ROC} per poder avaluar la classificació de les
-    diferents classes. A continuació es pot observar els resultats:
+
     \newpage
+    \subsection{Anàlisis de les dades inicial}
+
+    Primerament, serà necessari observar les correlacions inicials de les variables que tenim, per poder predir quines variables seran les més dependents de l'espècie de flor.
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale=0.3]{correlacionesIris.png}
+        \caption{Correlacions dels atributs amb la variable a classificar del dataset Iris.}
+    \end{figure}
+
+    Observem que les variables \textit{petal length} i \textit{petal width} tenen una alta correlació amb la classe, per tant, s'utilitzaran només aquests dos atributs per fer la classificació. Això ho fem per tal de simplificar els càlculs com perquè es pot predir que les altres variables no aportaran informació.
+
+    \newpage
+    \subsection{Models de classificació}
+
+    Per cada model hem generat les corbes \textit{PR} i \textit{ROC} per poder avaluar el rendiment la classificació de les diferents classes. La \textit{PR} mostra la precisió, entesa com la fracció d'instàncies recuperades que són rellevants, contra el \textit{recall}, que és la fracció d'instàncies rellevants que han sigut recuperades. La \textit{ROC} és una representació gràfica de la sensibilitat en enfront de l'especificitat d'un sistema de classificació binari.
+
+    A continuació es pot observar els resultats:
         \begin{itemize}
             \item \textbf{Regressió logística:}
 
@@ -106,6 +122,7 @@
                 \caption*{SVM amb kernel RBF: Corba PR (dreta) i ROC (esquerra)}
                 \end{figure}
 
+            \newpage
             \item \textbf{SVM amb kernel lineal:}
 
 
@@ -141,7 +158,7 @@
                 \caption*{SVM amb kernel polinomial de grau 3: Corba PR (dreta) i ROC (esquerra)}
                 \end{figure}
 
-
+            \newpage
             \item \textbf{SVM amb kernel Sigmoidal:}
 
 
@@ -174,7 +191,7 @@
                 \subfloat{{\includegraphics[width=7.5cm]{probclfe rog.png}}}%
                 \caption*{Random Forest amb criteri \textit{entropy}: Corba PR (dreta) i ROC (esquerra)}
                 \end{figure}
-
+            \newpage
             \item \textbf{KNN amb l'algoritme de \textit{ball tree}:}
 
 
@@ -198,7 +215,7 @@
                 \caption*{KNN amb l'algoritme de \textit{ball tree} amb els pesos ajustats segons la distància: Corba PR (dreta) i ROC (esquerra)}
                 \end{figure}
 
-
+            \newpage
             \item \textbf{KNN amb l'algoritme de \textit{kd tree}:}
 
 
@@ -210,7 +227,6 @@
                 \caption*{KNN amb l'algoritme de \textit{kd tree}: Corba PR (dreta) i ROC (esquerra)}
                 \end{figure}
 
-            \newpage
             \item \textbf{KNN amb l'algoritme de \textit{kd tree} amb els pesos ajustats segons la distància:}
 
 
@@ -221,8 +237,7 @@
                 \subfloat{{\includegraphics[width=7.5cm]{probKNNkdwd rog.png}}}%
                 \caption*{KNN amb l'algoritme de \textit{kd tree} amb els pesos ajustats segons la distància: Corba PR (dreta) i ROC (esquerra)}
                 \end{figure}
-
-
+            \newpage
             \item \textbf{KNN complet (força bruta):}
 
 
@@ -234,7 +249,6 @@
                 \caption*{KNN complet: Corba PR (dreta) i ROC (esquerra)}
                 \end{figure}
 
-            \newpage
             \item \textbf{KNN complet amb els pesos ajustats segons la distància:}
 
 
@@ -311,22 +325,13 @@
     del Pokemon, la vida base, l'atac base, la defensa base, l'atac especial base, la defensa
     especial base, la velocitat base, la generació a la qual pertany i si és llegendari o no.
 
-    \subsection{Anàlisis inicial de les dades}
-    Primerament, s'ha observat quines variables tenien components buides.
+    \subsection{Anàlisis i tractament inicial de les dades}
 
-    La variable \textit{Type 2} que correspon al segon tipus del Pokemon en alguns casos es
-    buida pel fet que no tots els Pokemon tenen dos tipus. Per corregir-ho, s'ha emplenat en les
-    buides amb el tipus principal del Pokemon.
+    El primer pas que hem de donar abans de poder treballar amb les dades és solucionar la presència de valors \textit{NaN} a dues de les columnes del dataset. Per sort una d'aquestes dues (\textit{percentage\_male}) hem considerat que no era útil per l'estudi i l'hem tret sencera. L'altra columna, \textit{type2}, sí que era més interessant mantenir-la perquè indica el segon tipus del Pokemon. La raó per la qual molts valors d'aquest atribut estaven buits era degut al fet que alguns Pokemon només tenen un tipus (\textit{type1}, totes les mostres tenen aquest atribut). La solució ha sigut omplir els \textit{type2} buits amb el mateix valor que hi ha a \textit{type1}.
 
-    S'ha decidit que el que s'intentarà classificar és si un Pokemon és llegendari o no depenguin dels seus atributs.
+    Si ens fixem en les dades categòriques veiem com alguns atributs que fan referència a noms (\textit{name}, \textit{japanese\_name} o \textit{abilities}) i que podrien considerar-se que són categories són prescindibles a l'hora de classificar. Altres columnes amb dades categòriques que sí que volem són les de \textit{type1} i \textit{type2}. Per codificar-les fem servir la rutina \textit{LabelEncoder} perquè les etiquetes prenguin valors numèrics enters.
 
-    Les variables \textit{name}, \textit{japanese\_name}, \textit{pokedex\_number},
-    \textit{percentage\_male}, \textit{abilities}, \textit{classfication}
-    han sigut eliminades perquè la informació que aporten no és útil per la classificació.
-
-    Les variables del tipus del Pokemon contenen paraules per especificar el tipus al qual pertanyen.
-    S'ha aplicat un \textit{Label Encoder} per traduir aquestes paraules a valors numèrics
-    diferenciables.
+    Una altra consideració ha sigut com normalitzar les dades, ja que fer això podria facilitar el procés de classificació. En el nostre cas farem una normalització estàndard sobre tota la base de dades restant la mitjana i dividint entre la desviació estàndard.
 
     \newpage
     \subsection{Estudi de les correlacions}
@@ -337,7 +342,7 @@
     \begin{figure}[H]
         \centering
         \includegraphics[scale=0.3]{correlacionesIsLegenday.png}
-        \caption{Correlacions dels atributs amb la variable a classificar.}
+        \caption{Correlacions dels atributs amb la variable a classificar del dataset Pokemon.}
     \end{figure}
 
     La conclusió més directa que podem treure és que la variable \textit{base\_egg\_steps}
@@ -347,15 +352,7 @@
     \textit{height}, \textit{hp}, \textit{sp\_attack}, \textit{sp\_defense}, \textit{speed}
     i \textit{weight\_kg}.
 
-    De les anteriors totes tenen una correlació positiva (favoreixen que el Pokemon sigui llegendari), excepte \textit{base\_happiness}.
-
-    \newpage
-    \subsection{Depuració de les dades}
-    Un problema que hem hagut de resoldre al principi ha sigut que dues de les columnes del \textit{dataset} presentaven valor \textit{NaN}. Per sort una d'aquestes dues (\textit{percentage\_male}) hem considerat que no era útil per l'estudi i l'hem tret sencera. L'altra columna, \textit{type2}, sí que era més interessant mantenir-la perquè indica el segon tipus del Pokemon. La raó per la qual molts valors d'aquest atribut estaven buits era degut al fet que alguns Pokemon només tenen un tipus (\textit{type1}, totes les mostres tenen aquest atribut). La solució ha sigut omplir els \textit{type2} buits amb el mateix valor que hi ha a \textit{type1}.
-
-    Si ens fixem en les dades categòriques veiem com alguns atributs que fan referència a noms (\textit{name}, \textit{japanese\_name} o \textit{abilities}) i que podrien considerar-se que són categories són prescindibles a l'hora de classificar. Altres columnes amb dades categòriques que sí que volem són les de \textit{type1} i \textit{type2}. Per codificar-les fem servir la rutina \textit{LabelEncoder} perquè les etiquetes prenguin valors enters entre 0 i el nombre de categories menys 1.
-
-    Una altra consideració ha sigut com normalitzar les dades, ja que fer això podria facilitar el procés de classificació. En el nostre cas farem una normalització estàndard sobre tota la base de dades restant la mitjana i dividint entre la desviació estàndard.
+    De les anteriors totes tenen una correlació positiva (afavoreixen que el Pokemon sigui llegendari), excepte \textit{base\_happiness}.
 
     \newpage
     \subsection{Aplicació de models}
@@ -480,19 +477,18 @@
         Aplicar \textit{LeaveOneOut} amb una regressió logística dona $0.98377$ de precisió. Les dimensions del dataset no són tan grans com perquè suposi un problema de temps executar aquest algorisme, però ja hem vist com altres configuracions de models i \textit{cross-validations} donen millors resultats.
 
         \subsection{Anàlisis de mètriques}
-        Per avaluar el rendiment de la classificació aplicada, és molt útil generar les corbes de \textit{ROC} i \textit{PR},
-        on la \textit{PR} ens determina la precisió com a la fracció d'instàncies recuperades que són rellevants i el \textit{recall} que és la fracció d'instàncies rellevants que han sigut recuperades, i la ROC és una representació gràfica de la sensibilitat en enfront de l'especificitat d'un sistema de classificació binari.
-        En el nostre cas, observarem les mètriques de les dades en brut amb els models de \textit{KNN} amb \textit{weights $=$ distance} i el \textit{random forest} amb \textit{criterion $=$ entropy} i 100 estimadors amb 5 de màxima profunditat que són dues mostres d'un model de classificació perfecte i altre de molt bona.
+
+        Grafiquem les corbes \textit{PR} i \textit{ROC} sobre les dades en brut, amb els models de \textit{KNN} (amb \textit{weights $=$ distance}) i el \textit{random forest} (amb \textit{criterion $=$ entropy} i 100 estimadors amb 5 de màxima profunditat). El primer representa un cas on el model es perfecte, mentre que l'altre comet errors en alguns casos.
 
         \begin{figure}[H]
             \centering
             \includegraphics[scale=0.3]{rfPR.png}
-            \caption{Corbes de PR per el \textit{Random Forest}}
+            \caption{Corbes de PR peel \textit{Random Forest}}
         \end{figure}
         \begin{figure}[H]
             \centering
             \includegraphics[scale=0.3]{rfROC.png}
-            \caption{Corbes de ROC per el \textit{Random Forest}}
+            \caption{Corbes de ROC peel \textit{Random Forest}}
             \end{figure}
 
         \begin{figure}[H]
@@ -524,6 +520,7 @@
             \end{tabular}
         \end{table}
 
+        \newpage
         Per poder avaluar correctament amb un cas desfavorable en la predicció utilitzarem el model de la sigmoide per comparar.
 
         \begin{table}[H]
@@ -550,7 +547,7 @@
             \item \textit{Random search}: De manera similar al \textit{Grid Search}, l'usuari genera una malla amb els hiperparàmetres que es volen provar, però ara les combinacions es trien aleatòriament. D'aquesta manera es pot explicitar quantes combinacions volem mirar. Això ve molt bé quan es treballa amb un model molt complex o es vol explorar una malla molt gran, on fer una cerca exhaustiva és inviable en termes de temps d'execució.
         \end{itemize}
 
-        
+
         Si provem els dos algoritmes amb un model \textit{Random Forest}, veiem com en aquest cas els dos troben la mateixa combinació de variables.
 
         \begin{table}[H]
@@ -574,6 +571,7 @@
             \end{tabular}
         \end{table}
 
+        \subsection{Conclusions}
 
 
 
